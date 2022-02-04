@@ -1,12 +1,6 @@
+use std::fmt::{Display, Formatter};
 use std::str::FromStr;
-use katex_wasmbind::KaTeXOptions;
-use pi_search::PiBase10;
-use wasm_bindgen_test::*;
-
-#[test]
-fn ready() {
-    println!("it works!")
-}
+use super::*;
 
 #[test]
 fn test() {

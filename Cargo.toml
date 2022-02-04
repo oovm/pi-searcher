@@ -1,12 +1,12 @@
 [workspace]
 members = ["projects/*"]
 default-members = [
-    "projects/wasmbind-katex",
-    "projects/yew-katex",
-    "projects/dioxus-katex",
-    "projects/katex-preview",
+    "projects/pi-search",
+    "projects/pi-search-demo",
 ]
+
 exclude = [
+    "projects/y-cruncher",
     "projects/.DS_Store",
 ]
 
