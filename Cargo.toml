@@ -1,0 +1,14 @@
+[workspace]
+members = ["projects/*"]
+default-members = [
+    "projects/wasmbind-katex",
+    "projects/yew-katex",
+    "projects/dioxus-katex",
+    "projects/katex-preview",
+]
+exclude = [
+    "projects/.DS_Store",
+]
+
+[profile.release]
+lto = true
