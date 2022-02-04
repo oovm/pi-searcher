@@ -1,7 +1,6 @@
+use std::path::Path;
 use std::str::FromStr;
-use katex_wasmbind::KaTeXOptions;
 use pi_search::PiBase10;
-use wasm_bindgen_test::*;
 
 #[test]
 fn ready() {
@@ -9,7 +8,8 @@ fn ready() {
 }
 
 #[test]
-fn test() {
-    let base = PiBase10::from_str(include_str!("../../../y-cruncher/Pi - Dec - Chudnovsky.txt"));
-    println!("{}", base.unwrap())
+#[ignore]
+fn dump_base10() {
+    let base10 = PiBase10::from_str(include_str!("../../y-cruncher/Pi - Dec - Chudnovsky.txt")).unwrap();
+    base10.dump(&Path::new("src/base10.bin"), 100_0000).unwrap();
 }

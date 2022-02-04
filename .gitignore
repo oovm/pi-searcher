@@ -25,5 +25,6 @@ Thumbs.db
 .DS_Store
 docs/.build/
 package-lock.json
+*.bin
 
 *.7z
