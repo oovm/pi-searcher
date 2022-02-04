@@ -6,7 +6,7 @@ pub fn str_to_base10_vec(s: &str) -> Result<Vec<u8>, String> {
     Ok(v)
 }
 
-fn char_to_base10(c: char) -> Result<u8, String> {
+pub fn char_to_base10(c: char) -> Result<u8, String> {
     let out = match c {
         '0' => { 0u8 }
         '1' => { 1 }
@@ -22,3 +22,5 @@ fn char_to_base10(c: char) -> Result<u8, String> {
     };
     Ok(out)
 }
+
+

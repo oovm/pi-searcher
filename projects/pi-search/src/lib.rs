@@ -7,7 +7,9 @@
 
 mod base10;
 mod base256;
+mod precomputed;
 pub mod utils;
 
 pub use base10::PiBase10;
 pub use base256::PiBase256;
+pub use precomputed::PiComputed;
