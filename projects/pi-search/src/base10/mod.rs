@@ -1,7 +1,9 @@
 use std::collections::HashMap;
+use std::fmt::{Debug, Formatter};
 use std::fs::File;
 use std::io::{Read, Write};
 use std::path::Path;
+use bincode::{Decode, Encode};
 
 use itertools::{iproduct, Itertools};
 use itertools::Product;
@@ -24,10 +26,17 @@ impl Default for PiBase10 {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+impl Debug for PiBase10 {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        f.debug_tuple("PiBase10").field(&self.digits.len()).finish()
+    }
+}
+
+#[derive(Clone, Encode, Decode)]
 pub struct PiBase10 {
     pub digits: Vec<u8>,
 }
+
 impl Searcher for PiBase10 {
     fn search(&self, input: &str, target: &[u8]) -> Result<usize, String> {
         let target_len = target.len();
