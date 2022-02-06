@@ -1,17 +1,17 @@
-use std::collections::HashMap;
+
 use std::fmt::{Debug, Formatter};
 use std::fs::File;
 use std::io::{Read, Write};
 use std::path::Path;
 use bincode::{Decode, Encode};
 
-use itertools::{iproduct, Itertools};
-use itertools::Product;
-use rayon::iter::{IntoParallelIterator, IntoParallelRefIterator};
-use serde_derive::{Deserialize, Serialize};
+use itertools::{iproduct};
+
+
+
 use crate::precomputed::Searcher;
 
-use crate::utils::str_to_base10_vec;
+
 
 #[cfg(test)]
 mod test;

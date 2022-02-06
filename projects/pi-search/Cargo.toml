@@ -3,10 +3,12 @@ name = "pi-search"
 version = "0.1.0"
 authors = ["Aster <galaster@foxmail.com>"]
 description = "Search digit in pi"
-repository = "https://github.com/oovm/katex-wasm"
+repository = "https://github.com/oovm/pi-searcher"
+documentation = "https://docs.rs/pi-search"
 license = "MPL-2.0"
 readme = "Readme.md"
 edition = "2021"
+include = ["src/**/*"]
 
 [dependencies]
 rayon = "1.5.1"

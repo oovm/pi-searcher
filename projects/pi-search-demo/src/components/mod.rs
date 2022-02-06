@@ -2,6 +2,8 @@ use dioxus::{events::FormEvent, prelude::*};
 
 use dioxus_katex::{use_katex_display, UseKatex};
 
+
+
 pub fn Editor(cx: Scope) -> Element {
     let place_holder = r#"K_{0}-K_{1}=\frac{E}{c^2}\frac{v^2}{2}"#;
     let (text, text_set) = use_state(&cx, || place_holder.to_string());

@@ -1,19 +1,13 @@
 [package]
-name = "katex-preview"
+name = "demo"
+version = "1.0.0"
 publish = false
-version = "0.2.0"
-authors = ["Aster <192607617@qq.com>"]
-description = "Render math with KaTeX in Yew!"
-repository = "https://github.com/GalAster/yew-katex"
 readme = "readme.md"
-license = "MPL-2.0"
-edition = "2018"
+edition = "2021"
+
 
 [dependencies]
 log = "0.4.14"
 wasm-logger = "0.2.0"
 dioxus = { version = "0.2.3", features = ["web"] }
-#dioxus-katex = { version = "*", path = "../dioxus-katex" }
-
-[dev-dependencies]
-macrowind = "0.1.1"
+pi-search = { path = "../pi-search"}

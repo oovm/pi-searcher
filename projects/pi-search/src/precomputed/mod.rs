@@ -35,14 +35,16 @@ impl<T: Searcher + Encode + Decode> PiComputed<T> {
     pub fn insert(&mut self, key: String, value: Option<usize>) {
         self.inner.insert(key, value);
     }
-    pub fn search(&mut self, input: String) -> Option<usize> {
-        match self.inner.get(&input) {
-            None => {}
-            Some(s) => {return s.clone();}
+    pub fn search(&mut self, input: String) -> Result<usize, String> {
+        if let Some(s) = self.inner.get(&input) {
+            return match s {
+                None => { Err(format!("{} not found", input)) }
+                Some(s) => { Ok(*s) }
+            };
         };
-        let target = str_to_base10_vec(&input).ok()?;
-        let result = self.searcher.search(&input, &target).ok();
-        self.inner.insert(input, result);
+        let target = str_to_base10_vec(&input)?;
+        let result = self.searcher.search(&input, &target);
+        self.inner.insert(input, result.clone().ok());
         result
     }
     pub fn dump(&self, path: &Path) -> std::io::Result<()> {

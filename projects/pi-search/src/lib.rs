@@ -10,6 +10,15 @@ mod base256;
 mod precomputed;
 pub mod utils;
 
+use bincode::config::standard;
+use bincode::decode_from_slice;
 pub use base10::PiBase10;
 pub use base256::PiBase256;
 pub use precomputed::PiComputed;
+
+pub fn computed() -> PiComputed<PiBase10> {
+    let config = standard();
+    let buffer = include_bytes!("computed.bin");
+    let (this, _) = decode_from_slice(&buffer[..], config).unwrap();
+    this
+}

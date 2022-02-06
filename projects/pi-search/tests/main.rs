@@ -15,6 +15,7 @@ fn dump_base10() {
 }
 
 #[test]
+#[ignore]
 fn dump_computed10() {
     let base10 = PiBase10::default().computed();
     base10.dump(&Path::new("src/computed.bin")).unwrap();
