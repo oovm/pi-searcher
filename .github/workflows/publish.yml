@@ -1,9 +1,9 @@
 name: Publish Examples
 on:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, dev ]
 
 jobs:
   publish:
@@ -22,7 +22,7 @@ jobs:
       - uses: jetli/trunk-action@v0.1.0
       - name: Build website 💣
         run: |
-          cd projects/katex-preview
+          cd projects/pi-search-demo
           wasm-bindgen -V
           trunk -V
           trunk build --release
@@ -31,5 +31,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: projects/katex-preview/dist
+          FOLDER: projects/pi-search-demo/dist
           CLEAN: true

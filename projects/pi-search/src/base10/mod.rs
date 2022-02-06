@@ -1,28 +1,23 @@
-
-use std::fmt::{Debug, Formatter};
-use std::fs::File;
-use std::io::{Read, Write};
-use std::path::Path;
 use bincode::{Decode, Encode};
+use std::{
+    fmt::{Debug, Formatter},
+    fs::File,
+    io::{Read, Write},
+    path::Path,
+};
 
-use itertools::{iproduct};
-
-
+use itertools::iproduct;
 
 use crate::precomputed::Searcher;
 
-
-
+mod mapping;
 #[cfg(test)]
 mod test;
 mod traits;
-mod mapping;
 
 impl Default for PiBase10 {
     fn default() -> Self {
-        Self {
-            digits: include_bytes!("../base10.bin").to_vec(),
-        }
+        Self { digits: include_bytes!("../base10.bin").to_vec() }
     }
 }
 
@@ -44,14 +39,12 @@ impl Searcher for PiBase10 {
         for offset in 0..end {
             let s = offset;
             let e = offset + target.len();
-            let this = unsafe {
-                self.digits.get_unchecked(s..e)
-            };
+            let this = unsafe { self.digits.get_unchecked(s..e) };
             if this == target {
                 return Ok(offset);
             }
         }
-        Err(format!("Could not find `{}` in first {} digit", input, self.digits.len()))
+        Err(format!("Could not find {:?} in first {} digit", input, self.digits.len()))
     }
 }
 
@@ -65,9 +58,7 @@ impl PiBase10 {
         let mut file = File::open(path)?;
         let mut buffer = Vec::with_capacity(1024);
         file.read_to_end(&mut buffer)?;
-        Ok(PiBase10 {
-            digits: buffer,
-        })
+        Ok(PiBase10 { digits: buffer })
     }
 }
 

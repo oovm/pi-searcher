@@ -10,4 +10,5 @@ edition = "2021"
 log = "0.4.14"
 wasm-logger = "0.2.0"
 dioxus = { version = "0.2.3", features = ["web"] }
-pi-search = { path = "../pi-search"}
+#pi-search = { path = "../pi-search"}
+pi-search = "0.2.0"

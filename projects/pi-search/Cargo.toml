@@ -1,6 +1,6 @@
 [package]
 name = "pi-search"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Aster <galaster@foxmail.com>"]
 description = "Search digit in pi"
 repository = "https://github.com/oovm/pi-searcher"

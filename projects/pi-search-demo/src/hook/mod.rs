@@ -2,8 +2,8 @@ use std::{
     cell::{Ref, RefCell, RefMut},
     fmt::{Debug, Formatter},
     rc::Rc,
+    sync::Arc,
 };
-use std::sync::Arc;
 
 use dioxus::prelude::*;
 use dioxus_elements::{div, GlobalAttributes};
@@ -17,12 +17,7 @@ pub struct UseSearcher {
 }
 
 pub fn use_searcher(cx: &ScopeState) -> &mut UseSearcher {
-    cx.use_hook(|| {
-        Self {
-            computer: Rc::new(RefCell::new(computed())),
-            updater: cx.schedule_update(),
-        }
-    })
+    cx.use_hook(|_| UseSearcher { computer: Rc::new(RefCell::new(computed())), updater: cx.schedule_update() })
 }
 
 impl UseSearcher {
@@ -49,28 +44,20 @@ impl UseSearcher {
         let out = config.search(input.to_string());
         match out {
             Ok(o) => {
+                let o = o + 1;
                 rsx! {
                     div {
-                        "{o}"
+                        class: "text-green-500",
+                        "Your lucky pi number is in the {o}th decimal place"
                     }
                 }
-            }
-            Err(e) => {
-                rsx! {
-                    div {
-                        "{o}"
-                    }
+            },
+            Err(e) => rsx! {
+                div {
+                    class: "text-red-500",
+                    "{e}"
                 }
-            }
+            },
         }
-        LazyNodes::new(move |cx: NodeFactory| -> VNode {
-            cx.element(
-                div,
-                &[],
-                cx.bump().alloc([div.dangerous_inner_html(cx, format_args!("{out}", out = out))]),
-                &[],
-                None,
-            )
-        })
     }
 }
