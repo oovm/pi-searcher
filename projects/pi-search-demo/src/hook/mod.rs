@@ -43,6 +43,30 @@ impl UseSearcher {
         let mut config = self.computer.borrow_mut();
         let out = config.search(input.to_string());
         match out {
+            Ok(0) => {
+                rsx! {
+                    div {
+                        class: "text-green-500",
+                        "Your lucky pi number is in the 1st decimal place"
+                    }
+                }
+            },
+            Ok(1) => {
+                rsx! {
+                    div {
+                        class: "text-green-500",
+                        "Your lucky pi number is in the 2nd decimal place"
+                    }
+                }
+            },
+            Ok(2) => {
+                rsx! {
+                    div {
+                        class: "text-green-500",
+                        "Your lucky pi number is in the 3rd decimal place"
+                    }
+                }
+            },
             Ok(o) => {
                 let o = o + 1;
                 rsx! {
