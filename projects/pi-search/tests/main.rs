@@ -1,6 +1,5 @@
-use std::path::Path;
-use std::str::FromStr;
 use pi_search::PiBase10;
+use std::{path::Path, str::FromStr};
 
 #[test]
 fn ready() {

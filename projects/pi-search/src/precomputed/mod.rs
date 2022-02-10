@@ -1,10 +1,11 @@
-use std::collections::BTreeMap;
-use std::fs::File;
-use std::io::{Read, Write};
-use std::path::Path;
+use std::{
+    collections::BTreeMap,
+    fs::File,
+    io::{Read, Write},
+    path::Path,
+};
 
-use bincode::{Decode, decode_from_slice, Encode, encode_to_vec};
-use bincode::config::standard;
+use bincode::{config::standard, decode_from_slice, encode_to_vec, Decode, Encode};
 
 use crate::utils::str_to_base10_vec;
 
@@ -18,10 +19,7 @@ pub trait Searcher: Default {
 
 impl<T: Searcher> Default for PiComputed<T> {
     fn default() -> Self {
-        Self {
-            inner: Default::default(),
-            searcher: Default::default(),
-        }
+        Self { inner: Default::default(), searcher: Default::default() }
     }
 }
 
@@ -38,8 +36,8 @@ impl<T: Searcher + Encode + Decode> PiComputed<T> {
     pub fn search(&mut self, input: String) -> Result<usize, String> {
         if let Some(s) = self.inner.get(&input) {
             return match s {
-                None => { Err(format!("{} not found", input)) }
-                Some(s) => { Ok(*s) }
+                None => Err(format!("{} not found", input)),
+                Some(s) => Ok(*s),
             };
         };
         let target = str_to_base10_vec(&input)?;

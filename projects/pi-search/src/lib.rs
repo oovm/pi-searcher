@@ -10,10 +10,9 @@ mod base256;
 mod precomputed;
 pub mod utils;
 
-use bincode::config::standard;
-use bincode::decode_from_slice;
 pub use base10::PiBase10;
 pub use base256::PiBase256;
+use bincode::{config::standard, decode_from_slice};
 pub use precomputed::PiComputed;
 
 pub fn computed() -> PiComputed<PiBase10> {

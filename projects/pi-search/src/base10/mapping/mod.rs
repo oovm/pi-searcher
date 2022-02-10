@@ -1,8 +1,3 @@
-
-
-
-
-
 use crate::PiComputed;
 
 use super::*;

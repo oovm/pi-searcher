@@ -61,9 +61,3 @@ impl PiBase10 {
         Ok(PiBase10 { digits: buffer })
     }
 }
-
-#[test]
-fn test() {
-    let search = PiBase10::default();
-    println!("{}", search.search_string("999555").unwrap() + 1);
-}
