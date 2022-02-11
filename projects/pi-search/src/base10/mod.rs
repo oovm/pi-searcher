@@ -1,11 +1,12 @@
-use bincode::{Decode, Encode};
 use std::{
-    fmt::{Debug, Formatter},
+    fmt::{Debug, Display, Formatter},
     fs::File,
-    io::{Read, Write},
+    io::{BufReader, Read, Write},
     path::Path,
+    str::FromStr,
 };
 
+use bincode::{Decode, Encode};
 use itertools::iproduct;
 
 use crate::precomputed::Searcher;
@@ -15,21 +16,15 @@ mod mapping;
 mod test;
 mod traits;
 
-impl Default for PiBase10 {
-    fn default() -> Self {
-        Self { digits: include_bytes!("../base10.bin").to_vec() }
-    }
-}
-
-impl Debug for PiBase10 {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        f.debug_tuple("PiBase10").field(&self.digits.len()).finish()
-    }
-}
-
 #[derive(Clone, Encode, Decode)]
 pub struct PiBase10 {
     pub digits: Vec<u8>,
+}
+
+impl Default for PiBase10 {
+    fn default() -> Self {
+        Self { digits: vec![] }
+    }
 }
 
 impl Searcher for PiBase10 {
@@ -49,9 +44,20 @@ impl Searcher for PiBase10 {
 }
 
 impl PiBase10 {
-    pub fn dump(&self, path: &Path, length: usize) -> std::io::Result<()> {
+    pub unsafe fn str_to_bin(input: &Path, output: &Path) -> std::io::Result<()> {
+        let file = File::open(input)?;
+        let mut buffer = vec![];
+        let mut reader = BufReader::new(file);
+        reader.read_to_end(&mut buffer)?;
+        let buffer = String::from_utf8_unchecked(buffer);
+        let this = Self::from_str(&buffer).unwrap();
+        let mut file = File::create(output)?;
+        file.write_all(&this.digits)?;
+        Ok(())
+    }
+    pub fn dump(&self, path: &Path) -> std::io::Result<()> {
         let mut file = File::create(path)?;
-        file.write_all(&self.digits[0..length])?;
+        file.write_all(&self.digits)?;
         Ok(())
     }
     pub fn load(path: &Path) -> std::io::Result<Self> {

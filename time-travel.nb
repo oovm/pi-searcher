@@ -1,0 +1,231 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9348,        223]
+NotebookOptionsPosition[      8534,        200]
+NotebookOutlinePosition[      8953,        217]
+CellTagsIndexPosition[      8910,        214]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"::", "Package", "::"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"git", " ", "rebase"}], " ", "-", 
+    RowBox[{
+     RowBox[{"i", " ", "--"}], "root"}]}], " ", "*)"}], "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetDirectory", "@", 
+     RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"all", " ", "=", " ", 
+     RowBox[{"Sort", "@", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"UnixTime", " ", "/@", " ", 
+         RowBox[{"{", "\n", "    ", 
+          RowBox[{
+           RowBox[{"DateObject", "[", 
+            RowBox[{"{", 
+             RowBox[{"2021", ",", "7", ",", " ", "27"}], "}"}], "]"}], ",", 
+           " ", "\n", "    ", 
+           RowBox[{"DateObject", "[", 
+            RowBox[{"{", 
+             RowBox[{"2021", ",", "8", ",", " ", "10"}], "}"}], "]"}]}], "\n",
+           "}"}]}], ",", " ", "19"}], "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"log", "[", "unix_", "]"}], " ", ":=", " ", 
+     RowBox[{"TemplateApply", "[", 
+      RowBox[{
+      "\"\<\\\n$commitDateString = \\\"``\\\"\n$env:GIT_COMMITTER_DATE = \
+$commitDateString\ngit commit --amend --no-edit --date $commitDateString\ngit \
+rebase --continue\n$env:GIT_COMMITTER_DATE = \\\"\\\"\n\>\"", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"DateString", "[", 
+         RowBox[{
+          RowBox[{"FromUnixTime", "[", "unix", "]"}], ",", " ", 
+          "\"\<ISODateTime\>\""}], "]"}], "}"}]}], "\n", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"powershell", " ", "=", " ", 
+     RowBox[{"StringRiffle", "[", 
+      RowBox[{
+       RowBox[{"log", " ", "/@", " ", "all"}], ",", " ", "\"\<\\n\>\""}], 
+      "]"}]}], ";"}], "\n", 
+   RowBox[{"powershell", " ", "//", " ", "CopyToClipboard"}], "\n", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+    "\"\<time-travel.ps1\>\"", ",", " ", "powershell", ",", " ", 
+     "\"\<Text\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.81504363683186*^9, 3.815043641624166*^9}, {
+   3.8150438804075356`*^9, 3.8150438902569237`*^9}, {3.8155431481368337`*^9, 
+   3.8155431536341405`*^9}, {3.8155433691090345`*^9, 3.815543369228623*^9}, {
+   3.8156876313791127`*^9, 3.8156876437130704`*^9}, 3.8423440122513742`*^9, {
+   3.84234406681793*^9, 3.842344077626897*^9}, {3.8423441391749125`*^9, 
+   3.8423441481534967`*^9}, {3.842924730703083*^9, 3.842924739949007*^9}, {
+   3.8434422061520114`*^9, 3.8434422115215683`*^9}, {3.8471777799429607`*^9, 
+   3.847177800675501*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"f27f36c7-1874-406f-b146-823eaa44c0b4"],
+
+Cell[BoxData["\<\"time-travel.ps1\"\>"], "Output",
+ CellChangeTimes->{3.8150438907990894`*^9, 3.8155431548562765`*^9, 
+  3.815543370718815*^9, 3.8156876454181647`*^9, 3.842344149375717*^9, 
+  3.842924741134683*^9, 3.843442214337412*^9, 3.8471778014454412`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"f457419a-4014-42dd-b8e9-9c8e8e6402d6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"::", "Package", "::"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"git", " ", "rebase"}], " ", "-", 
+    RowBox[{
+     RowBox[{"i", " ", "--"}], "root"}]}], " ", "*)"}], "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetDirectory", "@", 
+     RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"start", " ", "=", "  ", 
+     RowBox[{"DateObject", "[", 
+      RowBox[{"{", 
+       RowBox[{"2022", ",", "2", ",", " ", "2"}], "}"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"times", " ", "=", "9"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"all", " ", "=", " ", 
+     RowBox[{"Sort", "@", 
+      RowBox[{"RandomInteger", "[", 
+       RowBox[{
+        RowBox[{"UnixTime", " ", "/@", " ", 
+         RowBox[{"{", 
+          RowBox[{"start", ",", " ", 
+           RowBox[{"DatePlus", "[", 
+            RowBox[{"start", ",", "times"}], "]"}]}], "}"}]}], ",", " ", 
+        "times"}], "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"log", "[", "unix_", "]"}], " ", ":=", " ", 
+     RowBox[{"TemplateApply", "[", 
+      RowBox[{
+      "\"\<\\\ncommitDateString=\\\"``\\\"\n\
+GIT_COMMITTER_DATE=$commitDateString git commit --amend --no-edit --author=\\\
+\"Aster <galaster@foxmail.com>\\\" --date $commitDateString\ngit rebase \
+--continue\n\>\"", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"DateString", "[", 
+         RowBox[{
+          RowBox[{"FromUnixTime", "[", "unix", "]"}], ",", " ", 
+          "\"\<ISODateTime\>\""}], "]"}], "}"}]}], "\n", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"last", "=", "\"\<\nGIT_COMMITTER_DATE=\\\"\\\"\n\>\""}], ";"}], 
+   "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"powershell", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"StringRiffle", "[", 
+       RowBox[{
+        RowBox[{"log", " ", "/@", " ", "all"}], ",", " ", "\"\<\\n\>\""}], 
+       "]"}], "<>", "last"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"powershell", " ", "//", " ", "CopyToClipboard"}], "\n", 
+   RowBox[{"Export", "[", 
+    RowBox[{
+    "\"\<time-travel.sh\>\"", ",", " ", "powershell", ",", " ", 
+     "\"\<Text\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.81504363683186*^9, 3.815043641624166*^9}, {
+   3.8150438804075356`*^9, 3.8150438902569237`*^9}, {3.8155431481368337`*^9, 
+   3.8155431536341405`*^9}, {3.8155433691090345`*^9, 3.815543369228623*^9}, {
+   3.8156876313791127`*^9, 3.8156876437130704`*^9}, 3.8423440122513742`*^9, {
+   3.84234406681793*^9, 3.842344077626897*^9}, {3.8423441391749125`*^9, 
+   3.8423441481534967`*^9}, {3.842924730703083*^9, 3.842924739949007*^9}, {
+   3.8434422061520114`*^9, 3.8434422115215683`*^9}, {3.8471777799429607`*^9, 
+   3.847177800675501*^9}, {3.847177985139917*^9, 3.84717808797703*^9}, {
+   3.8471781512133045`*^9, 3.8471781589470296`*^9}, {3.847178353134635*^9, 
+   3.8471783724507246`*^9}, {3.84717844978951*^9, 3.847178456030691*^9}, {
+   3.847178526477222*^9, 3.8471785532039523`*^9}, 3.847178776475829*^9, {
+   3.847178814291258*^9, 3.847178828244219*^9}, {3.8471788624505386`*^9, 
+   3.847178862617632*^9}, {3.8471790790207167`*^9, 3.8471790917853746`*^9}, {
+   3.8471791304668612`*^9, 3.8471791310097156`*^9}, {3.8473531277374535`*^9, 
+   3.847353142150951*^9}, {3.847757516892519*^9, 3.847757572311578*^9}, {
+   3.8477576737211347`*^9, 3.8477576764416094`*^9}, {3.847757937871827*^9, 
+   3.847757955065807*^9}, {3.8477580718670664`*^9, 3.847758075545287*^9}, {
+   3.8477589707951803`*^9, 3.8477589751802955`*^9}, {3.8480201101617193`*^9, 
+   3.8480201113227425`*^9}, {3.849345069757289*^9, 3.8493450722804976`*^9}, {
+   3.850254581348337*^9, 3.850254585641982*^9}, {3.8508066335262246`*^9, 
+   3.850806637491727*^9}, {3.8563034243576097`*^9, 3.8563034267724133`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"14f7004e-89cd-4bda-8581-2e465a247542"],
+
+Cell[BoxData["\<\"time-travel.sh\"\>"], "Output",
+ CellChangeTimes->{
+  3.8150438907990894`*^9, 3.8155431548562765`*^9, 3.815543370718815*^9, 
+   3.8156876454181647`*^9, 3.842344149375717*^9, 3.842924741134683*^9, 
+   3.843442214337412*^9, 3.8471778014454412`*^9, 3.847178089851617*^9, 
+   3.8471781598581924`*^9, 3.847178373864373*^9, {3.8471784513684797`*^9, 
+   3.847178456415277*^9}, {3.847178541805601*^9, 3.8471785543826714`*^9}, 
+   3.8471788633435025`*^9, 3.8471790925214987`*^9, 3.8471791326524224`*^9, 
+   3.847353143422332*^9, 3.8477576794433794`*^9, 3.8477580770704384`*^9, 
+   3.8480201132948933`*^9, 3.849345073520789*^9, 3.850254588081935*^9, 
+   3.8508066402638564`*^9, 3.8563034282433357`*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"b77f6bf9-ef62-453b-a66c-49db0981bdda"]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.8493450768740635`*^9},ExpressionUUID->"949d903a-70e6-4c6d-93a7-\
+81744ac9e939"]
+},
+WindowSize->{776.25, 888.},
+WindowMargins->{{Automatic, 287.25}, {Automatic, 0}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (2021\:5e7412\:67082\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e4f3cdd9-1a21-4c68-857b-72183eff6823"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2626, 61, 497, "Input",ExpressionUUID->"f27f36c7-1874-406f-b146-823eaa44c0b4"],
+Cell[3209, 85, 338, 4, 32, "Output",ExpressionUUID->"f457419a-4014-42dd-b8e9-9c8e8e6402d6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3584, 94, 3991, 85, 557, "Input",ExpressionUUID->"14f7004e-89cd-4bda-8581-2e465a247542"],
+Cell[7578, 181, 788, 11, 81, "Output",ExpressionUUID->"b77f6bf9-ef62-453b-a66c-49db0981bdda"]
+}, Open  ]],
+Cell[8381, 195, 149, 3, 48, "Input",ExpressionUUID->"949d903a-70e6-4c6d-93a7-81744ac9e939"]
+}
+]
+*)
+

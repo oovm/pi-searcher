@@ -1,9 +1,10 @@
-use std::{
-    fmt::{Display, Formatter},
-    str::FromStr,
-};
-
 use super::*;
+
+impl Debug for PiBase10 {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        f.debug_tuple("PiBase10").field(&self.digits.len()).finish()
+    }
+}
 
 impl Display for PiBase10 {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
