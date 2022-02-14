@@ -25,7 +25,7 @@ impl FromStr for PiBase256 {
         assert_eq!(&input[0..2], "3.");
         let mut digits = Vec::with_capacity(9 + input.len() / 2);
         let s = 2usize;
-        let e = input.len() - 1;
+        let e = if input.len() % 2 == 1 { input.len() - 1 } else { input.len() };
         for i in (s..e).step_by(2) {
             let u = u8::from_str_radix(&input[i..i + 2], 16)?;
             digits.push(u);

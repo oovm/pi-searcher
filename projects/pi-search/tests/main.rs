@@ -1,4 +1,4 @@
-use std::{path::Path, str::FromStr};
+use std::path::Path;
 
 use pi_search::{PiBase10, PiBase256};
 
@@ -15,14 +15,14 @@ fn dump_base10() -> std::io::Result<()> {
 
 #[test]
 #[ignore]
-fn dump_base256() {
-    let base256 = PiBase256::from_str(include_str!("../../y-cruncher/Pi - Hex - Chudnovsky.txt")).unwrap();
-    base256.dump(&Path::new("src/base256.bin")).unwrap();
+fn dump_base256() -> std::io::Result<()> {
+    unsafe { PiBase256::str_to_bin(&Path::new("../y-cruncher/Pi - Hex - Chudnovsky.txt"), &Path::new("src/base256.bin")) }
 }
 
 #[test]
 #[ignore]
 fn dump_computed10() {
-    let base10 = PiBase10::default().computed();
+    let base10 = PiBase10::load(&Path::new("src/base10.bin")).unwrap().computed();
+    base10.dump_readable(&Path::new("src/computed.csv")).unwrap();
     base10.dump(&Path::new("src/computed.bin")).unwrap();
 }

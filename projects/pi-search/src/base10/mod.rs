@@ -12,8 +12,6 @@ use itertools::iproduct;
 use crate::precomputed::Searcher;
 
 mod mapping;
-#[cfg(test)]
-mod test;
 mod traits;
 
 #[derive(Clone, Encode, Decode)]

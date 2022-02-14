@@ -7,6 +7,7 @@ default-members = [
 
 exclude = [
     "projects/y-cruncher",
+    "projects/pi-search-data",
     "projects/.DS_Store",
 ]
 

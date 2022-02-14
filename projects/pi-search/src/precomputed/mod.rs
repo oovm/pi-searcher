@@ -52,6 +52,17 @@ impl<T: Searcher + Encode + Decode> PiComputed<T> {
         file.write_all(&encoded)?;
         Ok(())
     }
+    pub fn dump_readable(&self, path: &Path) -> std::io::Result<()> {
+        let mut file = File::create(path)?;
+        writeln!(file, "key,number")?;
+        for (key, value) in self.inner.iter() {
+            match value {
+                None => writeln!(file, "{},null", key)?,
+                Some(v) => writeln!(file, "{},{}", key, v)?,
+            }
+        }
+        Ok(())
+    }
     pub fn load(path: &Path) -> std::io::Result<Self> {
         let config = standard();
         let mut file = File::open(path)?;

@@ -9,9 +9,8 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 
-[*.scss]
-indent_style = space
-indent_size = 4
+[*.csv]
+insert_final_newline = false
 
 
 [*.toml]
