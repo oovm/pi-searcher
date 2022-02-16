@@ -1,17 +1,17 @@
-use crate::PiComputed;
+#![allow(unused)]
 
 use super::*;
 
 impl PiBase10 {
     pub fn computed(&self) -> PiComputed<Self> {
         let mut map = PiComputed::default();
-        // self.write_map_1(&mut map);
-        // self.write_map_2(&mut map);
-        // self.write_map_3(&mut map);
-        // self.write_map_4(&mut map);
-        // self.write_map_5(&mut map);
+        self.write_map_1(&mut map);
+        self.write_map_2(&mut map);
+        self.write_map_3(&mut map);
+        self.write_map_4(&mut map);
+        self.write_map_5(&mut map);
         self.write_map_6(&mut map);
-        // self.write_map_7(&mut map);
+        self.write_map_7(&mut map);
         map
     }
 

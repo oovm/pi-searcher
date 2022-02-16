@@ -26,5 +26,5 @@ Thumbs.db
 docs/.build/
 package-lock.json
 *.bin
-
+*.nb
 *.7z

@@ -9,7 +9,7 @@ use std::{
 use bincode::{Decode, Encode};
 use itertools::iproduct;
 
-use crate::precomputed::Searcher;
+use crate::{precomputed::Searcher, PiComputed};
 
 mod mapping;
 mod traits;
