@@ -1,15 +1,15 @@
 ## The largest position in each digit
 
-| Digits |     Max |   Position | NotFound |
-|-------:|--------:|-----------:|---------:|
-|      1 |       0 |         31 |        0 |
-|      2 |      68 |        604 |        0 |
-|      3 |     483 |      8,552 |        0 |
-|      4 |   6,716 |     99,845 |        0 |
-|      5 |  33,394 |  1,369,559 |        0 |
-|      6 | 569,540 | 14,118,306 |        0 |
-|      7 |   9,876 |  2,818,923 |        0 |
-|      8 |   1,904 |  4,816,923 |        0 |
+| Digits |       Max |    Position | NotFound |
+|-------:|----------:|------------:|---------:|
+|      1 |         0 |          31 |        0 |
+|      2 |        68 |         604 |        0 |
+|      3 |       483 |       8,552 |        0 |
+|      4 |     6,716 |      99,845 |        0 |
+|      5 |    33,394 |   1,369,559 |        0 |
+|      6 |   569,540 |  14,118,306 |        0 |
+|      7 | 1,075,656 | 166,100,499 |        0 |
+|      8 |         ? |           ? |        ? |
 
 Assuming pi is a [Normal Number](https://en.wikipedia.org/wiki/Normal_number), then the distribution of the maximum
 number position satisfies the [Exponential Distribution](https://en.wikipedia.org/wiki/Exponential_distribution).
