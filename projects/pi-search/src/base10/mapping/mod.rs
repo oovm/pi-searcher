@@ -82,14 +82,15 @@ impl PiBase10 {
                 let value = self.search(&key, &[i1, i2, i3, i4, i5, i6, i7]).ok();
                 (key, value)
             })
-            .filter(|(key, value)| match *value {
-                // 10^7*Probability[x>4*^7,x\[Distributed]ExponentialDistribution[10^-7]]//Round
-                // ≈ 183156
-                Some(s) if s < 4000_0000 => false,
-                _ => {
-                    println!("map7: {}, {:?}", key, value);
-                    true
-                },
+            .filter(|(key, value)| {
+                match *value {
+                    // 10^7*Probability[x>6*^7,x\[Distributed]ExponentialDistribution[10^-7]]//Round
+                    // ≈ 24788
+                    Some(s) if s >= 6000_0000 => {
+                        println!("map7: {}, {:?}", key, value);
+                    },
+                }
+                true
             })
             .collect::<Vec<(_, _)>>();
         for (key, value) in out {
@@ -105,14 +106,15 @@ impl PiBase10 {
                 let value = self.search(&key, &[i1, i2, i3, i4, i5, i6, i7, i8]).ok();
                 (key, value)
             })
-            .filter(|(key, value)| match *value {
-                // 10^8*Probability[x>6.5*^8,x\[Distributed]ExponentialDistribution[10^-8]]//Round
-                // ≈ 150344
-                Some(s) if s < 7_0000_0000 => false,
-                _ => {
-                    println!("map8: {}, {:?}", key, value);
-                    true
-                },
+            .filter(|(key, value)| {
+                match *value {
+                    // N@Probability[x>4.5*^8,x\[Distributed]ExponentialDistribution[10^-8]]
+                    // ≈ 1.11%
+                    Some(s) if s >= 4_5000_0000 => {
+                        println!("map8: {}, {:?}", key, value);
+                    },
+                }
+                true
             })
             .collect::<Vec<(_, _)>>();
         for (key, value) in out {
