@@ -83,12 +83,13 @@ impl PiBase10 {
                 (key, value)
             })
             .filter(|(key, value)| {
-                match *value {
+                match value {
                     // 10^7*Probability[x>6*^7,x\[Distributed]ExponentialDistribution[10^-7]]//Round
                     // ≈ 24788
-                    Some(s) if s >= 6000_0000 => {
+                    Some(s) if *s >= 6000_0000 => {
                         println!("map7: {}, {:?}", key, value);
                     },
+                    _ => {},
                 }
                 true
             })
@@ -98,7 +99,7 @@ impl PiBase10 {
         }
     }
     fn write_map_8(&self, map: &mut PiComputed<Self>) {
-        let out = iproduct!(0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9)
+        let out = iproduct!(0..=0, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9)
             .into_iter()
             .par_bridge()
             .map(|(i1, i2, i3, i4, i5, i6, i7, i8)| {
@@ -107,12 +108,13 @@ impl PiBase10 {
                 (key, value)
             })
             .filter(|(key, value)| {
-                match *value {
+                match value {
                     // N@Probability[x>4.5*^8,x\[Distributed]ExponentialDistribution[10^-8]]
                     // ≈ 1.11%
-                    Some(s) if s >= 4_5000_0000 => {
+                    Some(s) if *s >= 4_5000_0000 => {
                         println!("map8: {}, {:?}", key, value);
                     },
+                    _ => {},
                 }
                 true
             })

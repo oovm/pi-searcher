@@ -1,2 +1,2 @@
 *.mjs linguist-detectable=false
-*.js linguist-detectable=false
+*.csv linguist-language=mathematica

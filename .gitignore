@@ -12,6 +12,10 @@ target/
 y-cruncher/
 Cargo.lock
 dist/
+projects/pi-search-data/computed5_max.csv
+computed6.csv
+computed7.csv
+computed8.csv
 
 # Yarn
 yarn.lock
