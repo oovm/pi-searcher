@@ -9,14 +9,6 @@ use super::*;
 impl PiBase10 {
     pub fn computed(&self, part: u8) -> PiComputed<Self> {
         let mut map = PiComputed::default();
-        // self.write_map_1(&mut map);
-        // self.write_map_2(&mut map);
-        // self.write_map_3(&mut map);
-        // self.write_map_4(&mut map);
-        // self.write_map_5(&mut map);
-        // self.write_map_6(&mut map);
-        // self.write_map_7(&mut map);
-        // self.write_map_sp(&mut map);
         self.write_map_8_part_i(&mut map, part);
         map
     }
@@ -98,7 +90,7 @@ impl PiBase10 {
             map.insert(key, value);
         }
     }
-    fn write_map_8_part_i(&self, map: &mut PiComputed<Self>, i: u8) {
+    pub fn write_map_8_part_i(&self, map: &mut PiComputed<Self>, i: u8) {
         let out = iproduct!(i..=i, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9)
             .into_iter()
             .par_bridge()
