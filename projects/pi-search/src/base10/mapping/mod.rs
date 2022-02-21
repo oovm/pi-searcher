@@ -7,7 +7,7 @@ use crate::utils::str_to_base10_vec;
 use super::*;
 
 impl PiBase10 {
-    pub fn computed(&self) -> PiComputed<Self> {
+    pub fn computed(&self, part: u8) -> PiComputed<Self> {
         let mut map = PiComputed::default();
         // self.write_map_1(&mut map);
         // self.write_map_2(&mut map);
@@ -16,8 +16,8 @@ impl PiBase10 {
         // self.write_map_5(&mut map);
         // self.write_map_6(&mut map);
         // self.write_map_7(&mut map);
-        self.write_map_8(&mut map);
         // self.write_map_sp(&mut map);
+        self.write_map_8_part_i(&mut map, part);
         map
     }
 
@@ -98,8 +98,8 @@ impl PiBase10 {
             map.insert(key, value);
         }
     }
-    fn write_map_8(&self, map: &mut PiComputed<Self>) {
-        let out = iproduct!(0..=0, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9)
+    fn write_map_8_part_i(&self, map: &mut PiComputed<Self>, i: u8) {
+        let out = iproduct!(i..=i, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9, 0..=9)
             .into_iter()
             .par_bridge()
             .map(|(i1, i2, i3, i4, i5, i6, i7, i8)| {
