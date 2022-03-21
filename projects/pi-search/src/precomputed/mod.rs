@@ -53,9 +53,6 @@ impl<T: Searcher + Encode + Decode> PiComputed<T> {
         Ok(())
     }
     pub fn dump_readable(&self, path: &Path) -> std::io::Result<()> {
-        if let true = path.exists() {
-            return Ok(());
-        }
         let mut file = File::create(path)?;
         for (key, value) in self.inner.iter() {
             match value {
